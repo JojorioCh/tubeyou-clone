@@ -3,13 +3,13 @@ import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Box, Stack, Typography } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
-import { Video } from "./";
+import { Videos } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
 
 const VideoDetail = () => {
   const { id } = useParams();
   const [VideoDetail, setVideoDetail] = useState(null);
-  const [Videos, setVideos] = useState(null);
+  const [videos, setVideos] = useState(null);
 
   useEffect(() => {
     fetchFromAPI(`videos?part=snippet,statistics&id=${id}`).then((data) =>
@@ -68,7 +68,7 @@ const VideoDetail = () => {
           </Box>
         </Box>
         <Box px={2} py={{ md: 1, xs: 5 }} justifyContent="center">
-          <Video videos={Videos} direction="column" />
+          <Videos videos={videos} direction="column" />
         </Box>
       </Stack>
     </Box>
